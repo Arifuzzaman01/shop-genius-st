@@ -1,12 +1,14 @@
 import Banner from '@/components/Home/Banner';
 import Category from '@/components/Home/Category';
+import Products from '@/components/products/Products';
 import React from 'react';
 
 const HomePage = () => {
   return (
-    <div >
+    <div className='space-y-14'>
       <Banner />
       <Category />
+      <Products />
     </div>
   );
 };

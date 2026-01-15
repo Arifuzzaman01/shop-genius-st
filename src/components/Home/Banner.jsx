@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <div className="flex gap-5 pt-3 pb-8">
+    <div className="flex gap-5 pt-3 ">
       <div className="flex-1 bg-white rounded-md">
         <BannerCategory />
       </div>
@@ -12,7 +12,7 @@ const Banner = () => {
         <Image
           src={"/banner.png"}
           alt="Banner"
-          width={1000}
+          width={700}
           height={400}
           className="w-full h-[500px] rounded-lg"
         />

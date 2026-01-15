@@ -42,9 +42,9 @@ const categories = [
 
 const Category = () => {
   return (
-    <div>
-      <div className="flex justify-between items-center py-5">
-        <h1 className="text-2xl">Category</h1>
+    <div className="">
+      <div className="flex justify-between items-center ">
+        <h1 className="text-2xl font-semibold">Category</h1>
         <Link
           href={"/categories"}
           className="px-3 py-1.5 border border-gray-300 rounded-md"

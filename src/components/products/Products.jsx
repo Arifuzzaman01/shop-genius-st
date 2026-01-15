@@ -1,0 +1,40 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import ProductCard from "./ProductCard";
+import Link from "next/link";
+
+const Products = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/products.json");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+  return (
+    <div className="mt-18">
+      <div className="flex justify-between items-center mb-5">
+        <h1 className="text-2xl font-semibold ">New Arrival</h1>
+        <Link
+          href={"/shop"}
+          className="px-3 py-1.5 border border-gray-300 rounded-md"
+        >
+          See More
+        </Link>
+      </div>
+      <div className="grid grid-cols-5 gap-4">
+        {products.map((product) => (
+          <ProductCard key={product._id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Products;
