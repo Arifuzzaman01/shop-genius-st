@@ -14,7 +14,7 @@
     "brand": "Samsung",
     "sku": "SAM-A15",
     "rating": 4.4,
-    "description": "Budget friendly Samsung smartphone."
+    "description": "Budget friendly Samsung smartphone.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd002",
@@ -31,7 +31,7 @@
     "brand": "HP",
     "sku": "HP-PAV-15",
     "rating": 4.6,
-    "description": "Powerful laptop for work and study."
+    "description": "Powerful laptop for work and study.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd003",
@@ -48,7 +48,7 @@
     "brand": "boAt",
     "sku": "BOAT-450",
     "rating": 4.2,
-    "description": "Wireless headphone with long battery life."
+    "description": "Wireless headphone with long battery life.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd004",
@@ -65,7 +65,7 @@
     "brand": "Noise",
     "sku": "NOISE-CF",
     "rating": 4.1,
-    "description": "Fitness focused smart watch."
+    "description": "Fitness focused smart watch.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd005",
@@ -82,7 +82,7 @@
     "brand": "Urban Style",
     "sku": "TSHIRT-MEN",
     "rating": 4.0,
-    "description": "Comfortable daily wear t-shirt."
+    "description": "Comfortable daily wear t-shirt.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd006",
@@ -99,7 +99,7 @@
     "brand": "Ethnic Wear",
     "sku": "KURTI-WOM",
     "rating": 4.3,
-    "description": "Elegant ethnic wear kurti."
+    "description": "Elegant ethnic wear kurti.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd007",
@@ -107,7 +107,7 @@
     "subCategory": "refrigerator",
     "productName": "Walton Refrigerator 268L",
     "productImage": ["https://example.com/p7.png"],
-    "title": "Walton 268L Frost Refrigerator",
+    "title": "Walton 268L Frost Refrigerator Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!",
     "buyPrice": 38000,
     "sellPrice": 41999,
     "mrpPrice": 45000,
@@ -116,7 +116,7 @@
     "brand": "Walton",
     "sku": "WAL-FR-268",
     "rating": 4.5,
-    "description": "Energy efficient refrigerator."
+    "description": "Energy efficient refrigerator.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd008",
@@ -133,7 +133,7 @@
     "brand": "LG",
     "sku": "LG-MW-20",
     "rating": 4.4,
-    "description": "Compact and easy to use microwave."
+    "description": "Compact and easy to use microwave.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd009",
@@ -150,7 +150,7 @@
     "brand": "Himalaya",
     "sku": "FW-NEEM",
     "rating": 4.2,
-    "description": "Natural neem based face wash."
+    "description": "Natural neem based face wash.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd010",
@@ -167,7 +167,7 @@
     "brand": "Pran",
     "sku": "CHIPS-100",
     "rating": 4.1,
-    "description": "Crispy and tasty snack."
+    "description": "Crispy and tasty snack.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd011",
@@ -184,7 +184,7 @@
     "brand": "SG",
     "sku": "BAT-KW",
     "rating": 4.3,
-    "description": "Durable cricket bat for practice."
+    "description": "Durable cricket bat for practice.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   },
   {
     "_id": "prd012",
@@ -201,6 +201,6 @@
     "brand": "PowerFit",
     "sku": "DB-10KG",
     "rating": 4.5,
-    "description": "Perfect for home workout."
+    "description": "Perfect for home workout.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore, iure sunt aliquid sapiente similique ipsa? Consequatur fugit praesentium beatae quod possimus, quae quos cum odio placeat vel quis assumenda itaque distinctio quibusdam! Explicabo nisi voluptatem deleniti quae dicta aliquam, ad reprehenderit accusantium. Velit dignissimos nulla quasi delectus qui eveniet ad tenetur, autem quidem, deserunt natus, unde illum itaque quibusdam laudantium. Sunt, blanditiis, necessitatibus voluptatum incidunt ipsa fugiat aspernatur eligendi eos nisi nihil consectetur. Amet, optio. Eius neque dolores distinctio cupiditate adipisci suscipit deleniti architecto expedita quis repudiandae laborum incidunt voluptates sunt iure esse, ea facilis quae! Totam, quam at!"
   }
 ]
