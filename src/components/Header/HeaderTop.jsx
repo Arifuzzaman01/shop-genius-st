@@ -4,9 +4,12 @@ import Image from "next/image";
 import React from "react";
 import SearchBtn from "./SearchBtn";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { toggleDrawer } from "@/app/store/features/cardSlice";
 
 const HeaderTop = () => {
   const [searchOpen, setSearchOpen] = React.useState(false);
+  const dispatch = useDispatch()
   return (
     <div className="relative">
       <div className="flex justify-between items-center py-3.5 px-2.5">
@@ -49,10 +52,10 @@ const HeaderTop = () => {
           >
             <Search />
           </button>
-          <button className="relative cursor-pointer">
+          <button onClick={()=> dispatch(toggleDrawer())} className="relative cursor-pointer">
             <ShoppingBag />
             <div className=" absolute -top-1 left-4 w-fit h-5 bg-primary py-0.5 px-1.5 rounded-full text-gray-100 text-[12px] p-0.5 text-center">
-              {" "}
+              
               0
             </div>
           </button>

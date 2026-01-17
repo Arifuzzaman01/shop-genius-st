@@ -19,6 +19,7 @@ const categories = [
 ];
 const HeaderBottom = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="hidden border-t border-b-2 border-gray-300 py-1.5 md:flex justify-baseline items-center gap-5 px-3">
       <div

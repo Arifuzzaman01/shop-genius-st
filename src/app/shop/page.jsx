@@ -10,7 +10,7 @@ const ShopPage = () => {
         <div className='relative flex gap-6 my-7 px-4'>
             
          
-            <div className='hidden md:block w-64 lg:w-72'>
+            <div className='hidden md:block w-64 '>
                 <FilterShop />
             </div>
 
