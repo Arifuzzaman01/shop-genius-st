@@ -16,7 +16,7 @@ export const cartSlice = createSlice({
     closeDrawer: (state) => {
       state.isOpen = false;
     },
-    // আপনি চাইলে এখানে addToCart বা removeFromCart লজিকও যোগ করতে পারেন
+    
   },
 });
 

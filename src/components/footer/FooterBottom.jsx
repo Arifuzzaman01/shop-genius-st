@@ -5,6 +5,7 @@ import {
   TicketCheckIcon,
   Youtube,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -55,9 +56,13 @@ const FooterBottom = () => {
         <h4 className="text-xl font-bold text-gray-800 text-center mb-2">
           Payment Method
         </h4>
-        <p className="text-red-400 font-semibold text-xl text-center">
-          01339313060
-        </p>
+        <div className="text-red-400 font-semibold text-xl text-center flex gap-1.5 justify-center items-center">
+          <Image src={"/bkash.png"} width={50} height={50} alt="bkash payment" className="bg-white rounded-md" />
+          <Image src={"/bkash.png"} width={50} height={50} alt="bkash payment" className="bg-white rounded-md" />
+          <Image src={"/bkash.png"} width={50} height={50} alt="bkash payment" className="bg-white rounded-md" />
+          <Image src={"/bkash.png"} width={50} height={50} alt="bkash payment" className="bg-white rounded-md" />
+          
+        </div>
       </div>
     </div>
   );
