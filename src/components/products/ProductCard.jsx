@@ -18,12 +18,19 @@ const ProductCard = ({ product }) => {
       transition-all
       duration-500
       ease-out
-      hover:scale-110
+      hover:scale-105
       will-change-transform rounded-md"
-
         />
-        <span className="absolute top-1 right-1 hover:text-primary"><Heart size={20}/> </span>
-        <span className="bg-primary rounded-full py-0.5 px-2 text-white absolute top-1 left-1">0% off</span>
+        <span className="absolute top-1 right-1 hover:text-primary">
+          <Heart size={20} />{" "}
+        </span>
+        <span className="bg-primary rounded-full py-0.5 px-2 text-white absolute top-1 left-1">
+          {" "}
+          {Math.floor(
+            ((product?.mrpPrice - product?.sellPrice) / product?.mrpPrice) * 100
+          )}
+          % off
+        </span>
       </Link>
       <div className="p-2 text-text_primary ">
         <h2 className=" text-[15px] font-medium line-clamp-2">

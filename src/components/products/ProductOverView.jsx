@@ -226,13 +226,13 @@ const ProductOverView = ({ product }) => {
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white group">
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" // এখানে আপনার ভিডিও লিঙ্ক দিন
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
                 title="Product Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
 
-              {/* Overlay Decoration (ঐচ্ছিক) */}
+              {/* Overlay Decoration  */}
               <div className="absolute inset-0 pointer-events-none border border-black/5 rounded-2xl"></div>
             </div>
 

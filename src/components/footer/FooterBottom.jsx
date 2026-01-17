@@ -10,7 +10,7 @@ import React from "react";
 
 const FooterBottom = () => {
   return (
-    <div className="flex justify-around bg-[#DAEDE9] rounded-2xl py-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 justify-around bg-[#DAEDE9] rounded-2xl py-10">
       <div>
         <h4 className="text-xl font-bold text-gray-800 text-center mb-2">
           Follow Us
