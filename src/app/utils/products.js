@@ -1,23 +1,24 @@
-// const [products, setProducts] = useState([]);
-//   useEffect(() => {
-//     const fetchProducts = async () => {
-//       try {
-//         const response = await fetch("/products.json");
-//         const data = await response.json();
-//         setProducts(data);
-//       } catch (error) {
-//         console.error("Error fetching products:", error);
-//       }
-//     };
-//     fetchProducts();
-//   }, []);
-
-export const products = async () => {
+// app/utils/getProducts.js
+export const getProducts = async () => {
   try {
-    const response = await fetch("/products.json");
+    const response = await fetch(
+      "https://ecommerce-saas-server-wine.vercel.app/api/v1/product/website",
+      {
+        method: "GET",
+        headers: { 
+          "store-id": "0000129",
+          "Content-Type": "application/json"
+        },
+        next: { revalidate: 3600 }, 
+      }
+    );
+
+    if (!response.ok) throw new Error("Failed to fetch products");
+
     const data = await response.json();
-    return data;
+    return data?.data?.data || [];
   } catch (error) {
-    console.log(error);
+    console.error("Fetch Error:", error);
+    return [];
   }
 };

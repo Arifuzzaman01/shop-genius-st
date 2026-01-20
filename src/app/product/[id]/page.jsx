@@ -1,4 +1,5 @@
 "use client";
+import { addToCart } from "@/app/store/features/cartSlice";
 import ProductOverView from "@/components/products/ProductOverView";
 import {
   Briefcase,
@@ -12,59 +13,76 @@ import {
   Star,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const ProductPage = () => {
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const [zoomStyle, setZoomStyle] = useState({
     transformOrigin: "center center",
   });
+  const dispatch = useDispatch();
 
   const { id } = useParams();
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const response = await fetch("/products.json");
+      const response = await fetch(
+        `https://ecommerce-saas-server-wine.vercel.app/api/v1/product/path/${id}`,
+      );
       const res = await response.json();
-      setProducts(res);
+      setProduct(res?.data);
     };
     fetchProduct();
   }, []);
-  const product = products.filter((product) => product._id === id)[0];
 
-  //   console.log(filterProduct);
-  //   Image Scale
+  console.log(product);
 
+  const imageContainerRef = useRef(null);
   const handleMouseMove = (e) => {
+    if (!imageContainerRef.current) return;
+
     const { left, top, width, height } =
-      e.currentTarget.getBoundingClientRect();
+      imageContainerRef.current.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = e.clientY - top; //
+    const yPercent = (y / height) * 100;
 
-    const x = ((e.pageX - left) / width) * 100;
-    const y = ((e.pageY - top) / height) * 100;
-
-    setZoomStyle({
-      transformOrigin: `${x}% ${y}%`,
-    });
+    const img = imageContainerRef.current.querySelector("img");
+    if (img) {
+      img.style.transformOrigin = `${x}% ${yPercent}%`;
+    }
+  };
+  const handleMouseLeave = () => {
+    const img = imageContainerRef.current?.querySelector("img");
+    if (img) {
+      img.style.transformOrigin = "center center";
+    }
+  };
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
   };
   return (
     <div className="max-w-6xl mx-auto">
       <div className=" bg-white border border-gray-300 rounded-2xl flex gap-8 my-5 ">
         <div
-          className="overflow-hidden cursor-pointer flex-2"
+          ref={imageContainerRef}
+          className="overflow-hidden cursor-pointer flex-2 relative"
           onMouseMove={handleMouseMove}
-          onMouseLeave={() =>
-            setZoomStyle({ transformOrigin: "center center" })
-          }
+          onMouseLeave={handleMouseLeave}
         >
-          <Image
-            src="/power-bank.avif"
-            width={500}
-            height={400}
-            alt="product image"
-            style={zoomStyle}
-            className="transition-transform duration-300 hover:scale-[1.3] bg-cover rounded-l-2xl"
-          />
+          {product?.imageURLs?.[0] && (
+            <Image
+              src={product?.imageURLs?.[0]}
+              width={500}
+              height={400}
+              alt="product image"
+              className="transition-transform duration-300 hover:scale-[1.5] bg-cover rounded-l-2xl"
+              style={{ transformOrigin: "center center" }} // ডিফল্ট স্টাইল
+            />
+          )}
         </div>
         <div className="p-5 w-full flex-3 space-y-5">
           <div className="flex justify-between items-center">
@@ -84,7 +102,7 @@ const ProductPage = () => {
             </div>
           </div>
           <h1 className="text-3xl font-semibold text-text_primary ">
-            {product?.productName}
+            {product?.name}
           </h1>
           <div className="flex gap-3.5">
             <span className="flex gap-3.5 items-center">
@@ -107,14 +125,17 @@ const ProductPage = () => {
             </p>
           </div>
           <div className="flex gap-5 items-center mb-10">
-            <p className="text-gray-500 line-through">{product?.mrpPrice}</p>
+            <p className="text-gray-500 line-through">
+              {product?.productPrice}
+            </p>
             <p className="text-[#EA580C] text-4xl font-bold">
-              TK {product?.sellPrice}
+              TK {product?.salePrice}
             </p>
             <p className="px-2.5 text-sm py-0.5 bg-red-600 rounded-full text-white">
               {Math.floor(
-                ((product?.mrpPrice - product?.sellPrice) / product?.mrpPrice) *
-                  100
+                ((product?.productPrice - product?.salePrice) /
+                  product?.productPrice) *
+                  100,
               )}
               % Off
             </p>
@@ -129,10 +150,16 @@ const ProductPage = () => {
             </button>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <button className="w-full px-3 py-3 bg-primary rounded-[8px] text-white flex items-center justify-center hover:bg-green-700 gap-2 transition-all duration-200">
+            <Link
+              href={"check-out"}
+              className="w-full px-3 py-3 bg-primary rounded-[8px] text-white flex items-center justify-center hover:bg-green-700 gap-2 transition-all duration-200"
+            >
               <Briefcase /> অর্ডার করুন
-            </button>
-            <button className="w-full px-3 py-3 bg-[#CA8A04] rounded-[8px] text-white flex items-center justify-center hover:bg-[#be8303] gap-2 transition-all duration-200">
+            </Link>
+            <button
+              onClick={handleAddToCart}
+              className="w-full px-3 py-3 bg-[#CA8A04] rounded-[8px] text-white flex items-center justify-center hover:bg-[#be8303] gap-2 transition-all duration-200"
+            >
               <ShoppingCart /> কার্ডে যোগ করুন{" "}
             </button>
             <button className="w-full px-3 py-3 bg-[#075e54] rounded-[8px] text-white flex items-center justify-center hover:bg-[#03584f] gap-2 transition-all duration-200">
@@ -150,7 +177,7 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-      <ProductOverView product={product}/>
+      <ProductOverView product={product} />
     </div>
   );
 };

@@ -1,24 +1,12 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
+import { getProducts } from "@/app/utils/products";
 
-const Products = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("/products.json");
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-    fetchProducts();
-  }, []);
+const Products = async () => {
+  const products = await getProducts();
+  console.log(products);
   return (
-    <div className="mt-18">
+    <div className="mt-10">
       <div className="flex justify-between items-center mb-5">
         <h1 className="text-2xl font-semibold ">New Arrival</h1>
         <Link

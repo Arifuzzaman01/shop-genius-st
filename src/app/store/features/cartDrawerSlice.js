@@ -1,4 +1,3 @@
-// store/features/cartSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -6,7 +5,7 @@ const initialState = {
   cartItems: [],
 };
 
-export const cartSlice = createSlice({
+export const cartDrawerSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
@@ -20,5 +19,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { toggleDrawer, closeDrawer } = cartSlice.actions;
-export default cartSlice.reducer;
+export const { toggleDrawer, closeDrawer } = cartDrawerSlice.actions;
+export default cartDrawerSlice.reducer;
