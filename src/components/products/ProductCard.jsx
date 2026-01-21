@@ -5,17 +5,16 @@ import React from "react";
 import CartBtn from "./CartBtn";
 
 const ProductCard = ({ product }) => {
- 
-  // console.log(product);
   return (
-    <div className="bg-white rounded-md p-1.5 border-2 border-gray-200 flex flex-col justify-between ">
+    <div className="bg-white rounded-md p-1.5 border-2 border-gray-200 flex flex-col justify-between max-h-fit ">
       <Link href={`product/${product?.path}`} className="relative">
-        <Image
-          src={product?.imageURLs[0]}
-          width={200}
-          height={300}
-          alt={product?.name}
-          className="w-full 
+        {product?.imageURLs.length !== 0 ? (
+          <Image
+            src={product?.imageURLs[0]}
+            width={200}
+            height={300}
+            alt={product?.name}
+            className="w-full 
       object-cover
       transform
       transition-all
@@ -23,14 +22,31 @@ const ProductCard = ({ product }) => {
       ease-out
       hover:scale-105
       will-change-transform rounded-md"
-        />
+          />
+        ) : (
+          <Image
+            src={"/emptyImage.png"}
+            width={200}
+            height={300}
+            alt={product?.name}
+            className="w-full 
+      object-cover
+      transform
+      transition-all
+      duration-500
+      ease-out
+      hover:scale-105
+      will-change-transform rounded-md"
+          />
+        )}
         <span className="absolute top-1 right-1 hover:text-primary">
           <Heart size={20} />{" "}
         </span>
         <span className="bg-primary rounded-full py-0.5 px-2 text-white absolute top-1 left-1">
           {" "}
           {Math.floor(
-            ((product?.productPrice - product?.salePrice) / product?.productPrice) *
+            ((product?.productPrice - product?.salePrice) /
+              product?.productPrice) *
               100,
           )}
           % off

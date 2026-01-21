@@ -6,13 +6,14 @@ import React, { useEffect, useState } from "react";
 
 const BannerCategory = () => {
   const [hoveredCategoryId, setHoveredCategoryId] = useState(null);
-  const [categories, setCategories] = useState([]);
+  const [allCategories, setAllCategories] = useState([]);
   useEffect(() => {
     (async () => {
-      setCategories(await getCategories());
+      setAllCategories(await getCategories());
     })();
   }, []);
   // console.log(categories," categories");
+  const categories = allCategories.slice(0, 7).reverse();
   return (
     <div className="border border-gray-300 text-gray-900 bg-white rounded-b-lg ">
       <button className="flex gap-3 items-center bg-primary w-full text-white p-3">

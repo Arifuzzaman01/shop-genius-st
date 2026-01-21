@@ -4,7 +4,7 @@ import { getProducts } from "@/app/utils/products";
 
 const Products = async () => {
   const products = await getProducts();
-  console.log(products);
+  // console.log(products);
   return (
     <div className="mt-10">
       <div className="flex justify-between items-center mb-5">

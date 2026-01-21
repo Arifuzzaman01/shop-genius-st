@@ -38,7 +38,7 @@ const ProductPage = () => {
     fetchProduct();
   }, []);
 
-  console.log(product);
+  // console.log(product);
 
   const imageContainerRef = useRef(null);
   const handleMouseMove = (e) => {

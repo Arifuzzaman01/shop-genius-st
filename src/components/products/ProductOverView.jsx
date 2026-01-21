@@ -53,7 +53,7 @@ const ProductOverView = ({ product }) => {
     data.append("image", formData.image);
 
     try {
-      console.log("Submitting Review:", Object.fromEntries(data));
+      // console.log("Submitting Review:", Object.fromEntries(data));
 
       //  API call:
 
