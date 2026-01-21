@@ -19,7 +19,7 @@ async function getBanners() {
 
 const Banner = async () => {
   const banners = await getBanners();
-  console.log(banners, "banner image");
+  // console.log(banners, "banner image");
   return (
     <div className="flex gap-5 pt-3 ">
       <div className="hidden md:block flex-1 bg-white rounded-md border border-gray-100 shadow-sm ">

@@ -46,6 +46,24 @@ const cartSlice = createSlice({
         0,
       );
     },
+    incrementQuantity: (state, action) => {
+      const { id, quantity } = action.payload;
+      const existingItem = state.cartItems.find((item) => item._id === id);
+
+      if (existingItem && quantity > 0) {
+        // আগের কোয়ান্টিটি এবং নতুনের পার্থক্য বের করে টোটাল কোয়ান্টিটি আপডেট
+        const quantityDifference = quantity - existingItem.quantity;
+        existingItem.quantity = quantity;
+        existingItem.totalPrice = existingItem.salePrice * quantity;
+        state.totalQuantity += quantityDifference;
+
+        // টোটাল অ্যামাউন্ট আপডেট
+        state.totalAmount = state.cartItems.reduce(
+          (total, item) => total + item.salePrice * item.quantity,
+          0,
+        );
+      }
+    },
     clearCart: (state) => {
       state.cartItems = [];
       state.totalAmount = 0;
@@ -54,5 +72,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart, incrementQuantity } =
+  cartSlice.actions;
 export default cartSlice.reducer;

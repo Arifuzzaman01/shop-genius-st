@@ -1,14 +1,23 @@
 "use client";
 import React, { useState } from "react";
-import { Trash2, Plus, Minus } from "lucide-react";
+import { Trash2, Plus, Minus, X } from "lucide-react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+import { incrementQuantity, removeFromCart } from "../store/features/cartSlice";
 
 const CheckoutPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  const dispatch = useDispatch();
   const productsInCart = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-
+  const handleUpdateQuantity = (newQty, id) => {
+    if (newQty >= 1) {
+      dispatch(incrementQuantity({ id, quantity: newQty }));
+    }
+  };
+  const handleRemove = (id) => {
+  dispatch(removeFromCart(id))
+  }
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4 md:px-10">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -88,7 +97,7 @@ const CheckoutPage = () => {
                 >
                   <div className="relative w-16 h-16 bg-gray-100 rounded flex-shrink-0">
                     <Image
-                      src="/galaxyA17.avif"
+                      src={product?.imageURLs[0]}
                       alt="product"
                       fill
                       className="object-cover rounded"
@@ -107,14 +116,44 @@ const CheckoutPage = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center border border-gray-300 rounded-md h-8 self-center">
-                    <button className="px-2 hover:bg-gray-100">
-                      <Minus size={14} />
+                  <div className="flex flex-col items-end justify-between">
+                    <button
+                      onClick={() => handleRemove(product?._id)}
+                      className="flex justify-end w-full"
+                    >
+                      <X
+                        size={18}
+                        className="hover:rotate-90 transition-all duration-300"
+                      />
                     </button>
-                    <span className="px-3 text-sm font-bold">3</span>
-                    <button className="px-2 hover:bg-gray-100">
-                      <Plus size={14} />
-                    </button>
+                    <div className="flex items-center border border-gray-300 rounded-md h-8 self-center">
+                      <button
+                        onClick={() =>
+                          handleUpdateQuantity(
+                            product?.quantity - 1,
+                            product._id,
+                          )
+                        }
+                        disabled={product?.quantity <= 1}
+                        className="px-2 hover:bg-gray-100"
+                      >
+                        <Minus size={14} />
+                      </button>
+                      <span className="px-3 text-sm font-bold">
+                        {product?.quantity}
+                      </span>
+                      <button
+                        onClick={() =>
+                          handleUpdateQuantity(
+                            product?.quantity + 1,
+                            product._id,
+                          )
+                        }
+                        className="px-2 hover:bg-gray-100"
+                      >
+                        <Plus size={14} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
