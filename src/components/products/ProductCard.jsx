@@ -58,7 +58,7 @@ const ProductCard = ({ product }) => {
         </h2>
         <div className="flex gap-2 text-[17px] my-2.5 items-center">
           <p className="font-bold  text-primary">BDT {product?.salePrice}</p>
-          <p className="font-bold  text-gray-400 line-through">
+          <p className="font-semibold text-sm text-gray-400 line-through">
             BDT {product?.productPrice}
           </p>
         </div>

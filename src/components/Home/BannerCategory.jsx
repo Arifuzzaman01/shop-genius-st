@@ -2,6 +2,7 @@
 import { getCategories } from "@/app/utils/categories";
 import { ChevronRight, Handbag, LayoutDashboard } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const BannerCategory = () => {
@@ -27,7 +28,7 @@ const BannerCategory = () => {
             key={category._id}
             className="relative flex gap-2.5 justify-between items-center border-b border-gray-300  p-2.5"
           >
-            <div className="flex gap-3.5 items-center">
+            <Link href={`/shop?categoryPath=${encodeURIComponent(category.path || '')}`} className="flex gap-3.5 items-center w-full">
               {category.image ? (
                 <Image
                   src={category?.imageURLs}
@@ -39,7 +40,7 @@ const BannerCategory = () => {
                 <Handbag size={30} />
               )}
               <h2 className="capitalize">{category.parentCategory}</h2>
-            </div>
+            </Link>
             <ChevronRight size={20} />
             {hoveredCategoryId === category._id && (
               <div className="absolute left-full top-0 w-64 bg-white border border-gray-200 shadow-xl rounded-r-md z-50 py-2 animate-in fade-in slide-in-from-left-2 transition-all">
@@ -47,12 +48,13 @@ const BannerCategory = () => {
                 <div className="absolute -left-2 top-0 w-2 h-full bg-transparent" />
 
                 {category.subCategory.map((subCat) => (
-                  <div
+                  <Link
                     key={subCat._id}
-                    className="px-4 py-2 hover:bg-primary/5 hover:text-primary transition-colors text-sm border-b border-gray-50 last:border-0"
+                    href={`/shop?categoryPath=${encodeURIComponent(category.path || '')}&subCategory=${encodeURIComponent(subCat?.title)}`}
+                    className="block px-4 py-2 hover:bg-primary/5 hover:text-primary transition-colors text-sm border-b border-gray-50 last:border-0"
                   >
                     {subCat?.title}
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}

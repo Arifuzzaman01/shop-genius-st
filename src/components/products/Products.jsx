@@ -3,7 +3,8 @@ import Link from "next/link";
 import { getProducts } from "@/app/utils/products";
 
 const Products = async () => {
-  const products = await getProducts();
+  const result = await getProducts();
+  const products = Array.isArray(result) ? result : result?.data || [];
   // console.log(products);
   return (
     <div className="mt-10">

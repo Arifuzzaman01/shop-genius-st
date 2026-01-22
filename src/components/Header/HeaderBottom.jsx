@@ -32,7 +32,7 @@ const HeaderBottom = () => {
               {categories.map((cat, index) => (
                 <li key={index}>
                   <Link
-                    href={"shop"}
+                    href={`/shop?categoryPath=${cat?.path}`}
                     className="flex items-center gap-3 px-5 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors border-b border-gray-50 last:border-0"
                   >
                     {/* {cat.image} */}
