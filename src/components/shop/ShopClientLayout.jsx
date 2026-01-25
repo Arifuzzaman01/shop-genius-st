@@ -127,7 +127,7 @@ export default function ShopClientLayout({ categories, allProducts, meta }) {
 
       <div className="flex-1 space-y-6">
         {/* Header */}
-        <div className="flex flex-wrap justify-between items-center gap-4 p-4 bg-white shadow-sm border rounded-lg">
+        <div className="flex flex-wrap justify-between items-center gap-4 p-4 bg-white shadow-sm border border-gray-200 rounded-lg">
           <button 
             onClick={() => setOpenFilter(true)}
             className="md:hidden bg-primary px-4 py-2 text-white text-sm font-medium rounded shadow-sm flex items-center gap-2"

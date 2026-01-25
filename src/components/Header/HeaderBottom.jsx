@@ -50,19 +50,19 @@ const HeaderBottom = () => {
             <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"shop"}>All Product</Link>
+            <Link href={"/shop"}>All Product</Link>
           </li>
           <li>
-            <Link href={"offer"}> Offer</Link>
+            <Link href={"/offer"}> Offer</Link>
           </li>
           <li>
-            <Link href={"about"}>About</Link>
+            <Link href={"/about"}>About</Link>
           </li>
           <li>
-            <Link href={"contact"}>Contact</Link>
+            <Link href={"/contact"}>Contact</Link>
           </li>
           <li>
-            <Link href={"free-delivery"}>Free Delivery</Link>
+            <Link href={"/free-delivery"}>Free Delivery</Link>
           </li>
         </ul>
       </nav>

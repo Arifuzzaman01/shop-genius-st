@@ -21,7 +21,7 @@ const ShopPageContent = async ({ searchParams }) => {
     minPrice: minPriceParam,
     maxPrice: maxPriceParam,
     page: pageParam,
-    limit: 10,
+    limit: 16,
   });
 
   return (

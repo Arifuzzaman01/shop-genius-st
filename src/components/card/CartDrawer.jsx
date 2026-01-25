@@ -15,7 +15,7 @@ const CartDrawer = () => {
   const handleRemoveProduct = (productId) => {
     dispatch(removeFromCart(productId));
   };
-// console.log(products);
+  // console.log(products);
   return (
     <>
       <div
@@ -44,21 +44,30 @@ const CartDrawer = () => {
         <div className="p-4 space-y-4 overflow-y-auto h-[calc(100vh-160px)]">
           {products?.map((product) => (
             <div
-              key={product._id}
+              key={product?.id}
               className="flex gap-4 p-3 border rounded-lg relative group"
             >
-              <Image
-                src={product?.imageURLs[0]}
-                width={40}
-                height={40}
-                alt="p"
-                className="w-16 h-16 object-cover"
-              />
+              <div className="w-16 h-16 relative overflow-hidden rounded bg-gray-100">
+                {product?.imageURLs && product?.imageURLs.length > 0 ? (
+                  <Image
+                    src={product.imageURLs[0]}
+                    fill
+                    alt={product?.name || "product"}
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full text-[10px] text-gray-400">
+                    No Image
+                  </div>
+                )}
+              </div>
               <div className="flex-1">
                 <h4 className="text-sm font-medium line-clamp-1">
                   {product?.name}
                 </h4>
-                <p className="font-bold mt-1 text-primary">৳ {product?.salePrice}</p>
+                <p className="font-bold mt-1 text-primary">
+                  ৳ {product?.salePrice}
+                </p>
                 <div className="flex items-center border w-fit rounded mt-2">
                   <button className="px-2 py-1">
                     <Minus size={14} />
@@ -69,7 +78,10 @@ const CartDrawer = () => {
                   </button>
                 </div>
               </div>
-              <button onClick={() => handleRemoveProduct(product._id)} className="text-red-500 absolute bottom-3 right-3 p-1.5 border border-red-100 rounded hover:bg-red-50">
+              <button
+                onClick={() => handleRemoveProduct(product._id)}
+                className="text-red-500 absolute bottom-3 right-3 p-1.5 border border-red-100 rounded hover:bg-red-50"
+              >
                 <Trash2 size={16} />
               </button>
             </div>

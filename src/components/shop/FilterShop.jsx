@@ -1,4 +1,3 @@
-// components/shop/FilterShop.jsx
 "use client";
 import React from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -8,7 +7,6 @@ const FilterShop = ({ categories, onFilterChange }) => {
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
-  // সরাসরি URL থেকে মানগুলো নেওয়া হচ্ছে (Decode সহ)
   const selectedCategories = decodeURIComponent(
     searchParams.get("categoryPath") || "",
   )
@@ -27,18 +25,32 @@ const FilterShop = ({ categories, onFilterChange }) => {
     } else {
       params.delete(key);
     }
-    
+
     // Update URL
     router.push(`${pathName}?${params.toString()}`, { scroll: false });
-    
+
     // Lift up the updated filter object
     const updatedFilterObject = {
-      categoryPath: key === 'categoryPath' ? (Array.isArray(value) ? value.join(',') : value) : (selectedCategories.length > 0 ? selectedCategories.join(',') : ''),
-      subCategory: key === 'subCategory' ? (Array.isArray(value) ? value.join(',') : value) : (selectedSubCategories.length > 0 ? selectedSubCategories.join(',') : ''),
-      minPrice: key === 'minPrice' ? value : (searchParams.get("minPrice") || ''),
-      maxPrice: key === 'maxPrice' ? value : (searchParams.get("maxPrice") || '')
+      categoryPath:
+        key === "categoryPath"
+          ? Array.isArray(value)
+            ? value.join(",")
+            : value
+          : selectedCategories.length > 0
+            ? selectedCategories.join(",")
+            : "",
+      subCategory:
+        key === "subCategory"
+          ? Array.isArray(value)
+            ? value.join(",")
+            : value
+          : selectedSubCategories.length > 0
+            ? selectedSubCategories.join(",")
+            : "",
+      minPrice: key === "minPrice" ? value : searchParams.get("minPrice") || "",
+      maxPrice: key === "maxPrice" ? value : searchParams.get("maxPrice") || "",
     };
-    
+
     onFilterChange(updatedFilterObject);
   };
 
@@ -62,7 +74,7 @@ const FilterShop = ({ categories, onFilterChange }) => {
     e.preventDefault();
     const min = e.target.min.value;
     const max = e.target.max.value;
-    
+
     const params = new URLSearchParams(searchParams.toString());
     if (min) params.set("minPrice", min);
     else params.delete("minPrice");
@@ -70,34 +82,36 @@ const FilterShop = ({ categories, onFilterChange }) => {
     else params.delete("maxPrice");
 
     router.push(`${pathName}?${params.toString()}`, { scroll: false });
-    
+
     // Lift up the updated filter object
     const updatedFilterObject = {
-      categoryPath: selectedCategories.length > 0 ? selectedCategories.join(',') : '',
-      subCategory: selectedSubCategories.length > 0 ? selectedSubCategories.join(',') : '',
-      minPrice: min || '',
-      maxPrice: max || ''
+      categoryPath:
+        selectedCategories.length > 0 ? selectedCategories.join(",") : "",
+      subCategory:
+        selectedSubCategories.length > 0 ? selectedSubCategories.join(",") : "",
+      minPrice: min || "",
+      maxPrice: max || "",
     };
-    
+
     onFilterChange(updatedFilterObject);
   };
 
   const handleClear = () => {
     router.push(pathName);
-    
+
     // Lift up empty filter object
     const emptyFilterObject = {
-      categoryPath: '',
-      subCategory: '',
-      minPrice: '',
-      maxPrice: ''
+      categoryPath: "",
+      subCategory: "",
+      minPrice: "",
+      maxPrice: "",
     };
-    
+
     onFilterChange(emptyFilterObject);
   };
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 max-h-screen overflow-y-auto  custom-scrollbar mb-10">
       {/* Price Filter */}
       <div className="bg-white p-4 shadow-sm border border-gray-100 rounded-md">
         <h2 className="font-semibold mb-4 text-gray-800">Filter by Price</h2>
@@ -141,7 +155,7 @@ const FilterShop = ({ categories, onFilterChange }) => {
         <h2 className="font-semibold text-gray-800 border-b pb-2">
           Categories
         </h2>
-        <div className="max-h-60 overflow-y-auto space-y-2 custom-scrollbar">
+        <div className="space-y-2 ">
           {categories?.map((cat) => (
             <label
               key={cat._id}
@@ -167,7 +181,7 @@ const FilterShop = ({ categories, onFilterChange }) => {
         <h2 className="font-semibold text-gray-800 border-b pb-2">
           Sub Categories
         </h2>
-        <div className="max-h-60 overflow-y-auto space-y-2 custom-scrollbar">
+        <div className="space-y-2">
           {categories
             ?.flatMap((cat) => cat.subCategory || [])
             .map((sub) => (

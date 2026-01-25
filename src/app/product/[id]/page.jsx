@@ -1,5 +1,5 @@
 "use client";
-import { addToCart } from "@/app/store/features/cartSlice";
+import { addToCart, incrementQuantity } from "@/app/store/features/cartSlice";
 import ProductOverView from "@/components/products/ProductOverView";
 import {
   Briefcase,
@@ -20,6 +20,8 @@ import { useDispatch } from "react-redux";
 
 const ProductPage = () => {
   const [product, setProduct] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const [activeVariant, setActiveVariant] = useState(null);
   const [zoomStyle, setZoomStyle] = useState({
     transformOrigin: "center center",
   });
@@ -38,7 +40,7 @@ const ProductPage = () => {
     fetchProduct();
   }, []);
 
-  // console.log(product);
+  console.log(product?.variant);
 
   const imageContainerRef = useRef(null);
   const handleMouseMove = (e) => {
@@ -62,34 +64,79 @@ const ProductPage = () => {
     }
   };
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
+    // console.log(quantity);
+    dispatch(addToCart({ product, quantity }));
   };
+  const handleUpdateQuantity = (newQty) => {
+    if (newQty >= 1) {
+      setQuantity(newQty);
+    }
+  };
+
+  const findVariant = product?.variant?.find(
+    (v) => v?.attributes?.Color === activeVariant,
+  );
+  const productImage =
+    activeVariant !== null && findVariant?.image
+      ? findVariant.image
+      : product?.imageURLs?.[0];
   return (
     <div className="max-w-6xl mx-auto">
-      <div className=" bg-white border border-gray-300 rounded-2xl flex gap-8 my-5 ">
-        <div
-          ref={imageContainerRef}
-          className="overflow-hidden cursor-pointer flex-2 relative"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
-          {product?.imageURLs?.[0] && (
-            <Image
-              src={product?.imageURLs?.[0]}
-              width={500}
-              height={400}
-              alt="product image"
-              className="transition-transform duration-300 hover:scale-[1.5] bg-cover rounded-l-2xl"
-              style={{ transformOrigin: "center center" }} // ডিফল্ট স্টাইল
-            />
-          )}
+      <div className=" bg-white border border-gray-300 rounded-2xl flex flex-col md:flex-row gap-6 my-5 ">
+        <div className="flex-2">
+          <div
+            ref={imageContainerRef}
+            className="overflow-hidden cursor-pointer  relative mb-3"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            {productImage ? (
+              <Image
+                key={productImage}
+                src={productImage}
+                width={500}
+                height={400}
+                alt={product?.name || "product image"}
+                className="transition-transform duration-300 hover:scale-[1.5] bg-cover rounded-l-2xl"
+                style={{ transformOrigin: "center center" }}
+              />
+            ) : (
+              <div className="w-[500px] h-[400px] bg-gray-100 flex items-center justify-center">
+                Loading...
+              </div>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-2 p-1.5">
+            {product?.variant?.length > 0 &&
+              product?.variant?.map((v) => (
+                <div onClick={()=> setActiveVariant(v?.attributes?.Color)} key={v?._id}>
+                  <Image
+                    src={v?.image}
+                    width={80}
+                    height={80}
+                    alt="variant image"
+                    className="border p-1.5 border-gray-300 rounded-md cursor-pointer hover:scale-105 transition-transform"
+                  />
+                </div>
+              ))}
+          </div>
         </div>
         <div className="p-5 w-full flex-3 space-y-5">
           <div className="flex justify-between items-center">
             <p className="text-sm font-semibold text-text_primary flex gap-2 items-center">
               Category:{" "}
               <span className="flex items-center gap-1 text-purple-700 text-[16px] font-semibold">
-                <SquareCheckBig size={16} /> {product?.subCategory}
+                <SquareCheckBig size={16} />
+                {product?.category?.map((cat, i) => (
+                  <Link
+                    key={i}
+                    href={`/shop?categoryPath=${encodeURIComponent(product?.categoryPath[i])}`}
+                    className="hover:underline"
+                  >
+                    {cat}
+                    {i < product.category.length - 1 ? ", " : ""}
+                  </Link>
+                ))}
               </span>
             </p>
             <div className="flex gap-4">
@@ -101,10 +148,10 @@ const ProductPage = () => {
               </div>
             </div>
           </div>
-          <h1 className="text-3xl font-semibold text-text_primary ">
+          <h1 className="text-2xl md:text-3xl font-semibold text-text_primary ">
             {product?.name}
           </h1>
-          <div className="flex gap-3.5">
+          <div className="flex gap-3.5 justify-center md:justify-start">
             <span className="flex gap-3.5 items-center">
               {[...Array(5)].map((_, index) => (
                 <Star
@@ -124,28 +171,62 @@ const ProductPage = () => {
               )}
             </p>
           </div>
-          <div className="flex gap-5 items-center mb-10">
+          {/* pricing */}
+          <div className="flex justify-center md:justify-start gap-5 items-center mb-4">
             <p className="text-gray-500 line-through">
-              {product?.productPrice}
+              {activeVariant !== null
+                ? findVariant?.productPrice
+                : product?.productPrice}
             </p>
             <p className="text-[#EA580C] text-4xl font-bold">
-              TK {product?.salePrice}
+              TK{" "}
+              {activeVariant !== null
+                ? findVariant?.salePrice
+                : product?.salePrice}
             </p>
             <p className="px-2.5 text-sm py-0.5 bg-red-600 rounded-full text-white">
-              {Math.floor(
-                ((product?.productPrice - product?.salePrice) /
-                  product?.productPrice) *
-                  100,
-              )}
+              {activeVariant !== null
+                ? findVariant?.discount
+                : Math.floor(
+                    ((product?.productPrice - product?.salePrice) /
+                      product?.productPrice) *
+                      100,
+                  )}
               % Off
             </p>
           </div>
-          <div className="flex gap-3 items-center border-2 border-gray-300 p-2 rounded-md w-fit">
-            <button className="cursor-pointer">
+          {/* variant */}
+
+          <div>
+            <p className="font-semibold pb-1">Color</p>
+            {product?.variant && product?.variant.length > 0 && (
+            <div className="flex justify-center md:justify-start gap-1.5">
+              {product?.variant?.map((v, i) => (
+                <button
+                  onClick={() => setActiveVariant(v?.attributes?.Color)}
+                  className={`border border-gray-400 px-3 py-1 rounded-sm ${activeVariant === v?.attributes?.Color ? "text-red-600 border-red-500" : ""}`}
+                  key={i}
+                >
+                  {v?.attributes?.Color}
+                </button>
+              ))}
+            </div>
+          )}
+          </div>
+
+          <div className="flex gap-3 items-center border-2 border-gray-300 p-2 rounded-md w-fit mx-auto md:mx-0">
+            <button
+              onClick={() => handleUpdateQuantity(quantity + 1, product)}
+              className="cursor-pointer"
+            >
               <Plus />
             </button>
-            <p>{1}</p>
-            <button className="cursor-pointer">
+            <p>{quantity}</p>
+            <button
+              onClick={() => handleUpdateQuantity(quantity - 1, product)}
+              disabled={product?.quantity <= 1}
+              className="cursor-pointer"
+            >
               <Minus />
             </button>
           </div>
