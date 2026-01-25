@@ -4,7 +4,7 @@ import { X, Trash2, Plus, Minus } from "lucide-react";
 import { closeDrawer } from "@/app/store/features/cartDrawerSlice";
 import Link from "next/link";
 import Image from "next/image";
-import { removeFromCart } from "@/app/store/features/cartSlice";
+import { incrementQuantity, removeFromCart } from "@/app/store/features/cartSlice";
 
 const CartDrawer = () => {
   const { isOpen } = useSelector((state) => state.cartDrawer);
@@ -14,6 +14,13 @@ const CartDrawer = () => {
 
   const handleRemoveProduct = (productId) => {
     dispatch(removeFromCart(productId));
+  };
+  const handleUpdateQuantity = (productId, newQuantity) => {
+    if (newQuantity < 1) {
+      dispatch(incrementQuantity({ id: productId, quantity: 1 }));
+    } else {
+      dispatch(incrementQuantity({ id: productId, quantity: newQuantity }));
+    }
   };
   // console.log(products);
   return (
@@ -44,23 +51,16 @@ const CartDrawer = () => {
         <div className="p-4 space-y-4 overflow-y-auto h-[calc(100vh-160px)]">
           {products?.map((product) => (
             <div
-              key={product?.id}
+              key={product._id}
               className="flex gap-4 p-3 border rounded-lg relative group"
             >
-              <div className="w-16 h-16 relative overflow-hidden rounded bg-gray-100">
-                {product?.imageURLs && product?.imageURLs.length > 0 ? (
-                  <Image
-                    src={product.imageURLs[0]}
-                    fill
-                    alt={product?.name || "product"}
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="flex items-center justify-center h-full text-[10px] text-gray-400">
-                    No Image
-                  </div>
-                )}
-              </div>
+              <Image
+                src={product?.imageURLs[0]}
+                width={40}
+                height={40}
+                alt="p"
+                className="w-16 h-16 object-cover"
+              />
               <div className="flex-1">
                 <h4 className="text-sm font-medium line-clamp-1">
                   {product?.name}
@@ -69,11 +69,21 @@ const CartDrawer = () => {
                   ৳ {product?.salePrice}
                 </p>
                 <div className="flex items-center border w-fit rounded mt-2">
-                  <button className="px-2 py-1">
+                  <button
+                    onClick={() =>
+                      handleUpdateQuantity(product._id, product.quantity - 1)
+                    }
+                    className="px-2 py-1"
+                  >
                     <Minus size={14} />
                   </button>
-                  <span className="px-3">3</span>
-                  <button className="px-2 py-1 border-l">
+                  <span className="px-3">{product.quantity}</span>
+                  <button
+                    onClick={() =>
+                      handleUpdateQuantity(product._id, product.quantity + 1)
+                    }
+                    className="px-2 py-1 border-l"
+                  >
                     <Plus size={14} />
                   </button>
                 </div>

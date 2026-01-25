@@ -18,6 +18,7 @@ const CheckoutPage = () => {
   const handleRemove = (id) => {
   dispatch(removeFromCart(id))
   }
+  console.log(productsInCart[0]);
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4 md:px-10">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
