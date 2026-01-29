@@ -6,8 +6,8 @@ import CartBtn from "./CartBtn";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-white rounded-md p-1.5 border-2 border-gray-200 flex flex-col justify-between max-h-fit ">
-      <Link href={`product/${product?.path}`} className="relative">
+    <div className="group overflow-hidden bg-white rounded-md  cursor-pointer  border-2 border-gray-200 flex flex-col justify-between max-h-fit ">
+      <Link href={`product/${product?.path}`} className="relative  overflow-hidden">
         {product?.imageURLs.length !== 0 ? (
           <Image
             src={product?.imageURLs[0]}
@@ -51,6 +51,7 @@ const ProductCard = ({ product }) => {
           )}
           % off
         </span>
+      <div className="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-40"></div>
       </Link>
       <div className="p-2 text-text_primary ">
         <h2 className=" text-[15px] font-medium line-clamp-2">
@@ -69,3 +70,5 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+
+

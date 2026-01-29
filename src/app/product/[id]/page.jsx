@@ -149,7 +149,7 @@ const ProductPage = () => {
           </div>
         </div>
         <div className="p-5 w-full flex-3 space-y-5">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm font-semibold text-text_primary flex gap-2 items-center">
               Category:{" "}
               <span className="flex items-center gap-1 text-purple-700 text-[16px] font-semibold">
@@ -166,7 +166,7 @@ const ProductPage = () => {
                 ))}
               </span>
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-2 md:gap-4 justify-between md:justify-center">
               <div className="bg-gray-300 p-1.5 rounded-md">
                 <Heart size={20} className="text-primary " />
               </div>
@@ -175,7 +175,7 @@ const ProductPage = () => {
               </div>
             </div>
           </div>
-          <h1 className="text-2xl md:text-3xl font-semibold text-text_primary ">
+          <h1 className="text-2xl text-center md:text-start md:text-3xl font-semibold text-text_primary ">
             {product?.name}
           </h1>
           <div className="flex gap-3.5 justify-center md:justify-start">
@@ -203,10 +203,10 @@ const ProductPage = () => {
             <p className="text-gray-500 line-through">
               TK {findVariant?.productPrice || product?.productPrice}
             </p>
-            <p className="text-[#EA580C] text-4xl font-bold">
+            <p className="text-[#EA580C] text-2xl md:text-4xl font-bold">
               TK {findVariant?.salePrice || product?.salePrice}
             </p>
-            <p className="px-2.5 text-sm py-0.5 bg-red-600 rounded-full text-white">
+            <p className="px-2.5 text-xs md:text-sm py-0.5 bg-red-600 rounded-full text-white">
               {findVariant?.discount ||
                 Math.floor(
                   ((product?.productPrice - product?.salePrice) /
@@ -250,10 +250,10 @@ const ProductPage = () => {
             </div>
           ))}
 
-          <div className="flex gap-3 items-center border-2 border-gray-300 p-2 rounded-md w-fit mx-auto md:mx-0">
+          <div className="flex gap-3 items-center justify-between border-2 border-gray-300 p-2 rounded-md w-fit mx-auto md:mx-0">
             <button
               onClick={() => handleUpdateQuantity(quantity + 1)}
-              className="cursor-pointer"
+              className="cursor-pointer w-full "
             >
               <Plus />
             </button>
@@ -261,12 +261,12 @@ const ProductPage = () => {
             <button
               onClick={() => handleUpdateQuantity(quantity - 1)}
               disabled={quantity <= 1}
-              className="cursor-pointer disabled:opacity-30"
+              className="cursor-pointer disabled:opacity-30 w-full flex justify-end"
             >
               <Minus />
             </button>
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Link
               onClick={handleAddToCart}
               href={"/check-out"}

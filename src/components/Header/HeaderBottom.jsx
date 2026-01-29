@@ -2,6 +2,7 @@
 import { getCategories } from "@/app/utils/categories";
 import { ChevronDown, Laptop, Shirt, Smartphone, Watch } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const HeaderBottom = () => {
@@ -13,12 +14,15 @@ const HeaderBottom = () => {
     })();
   }, []);
   // console.log(categories);
+  const pathName = usePathname().split('/')[1]
+  // const path = pathName.split('/')[1];
+  console.log(pathName);
   return (
     <div className="hidden border-t border-b-2 border-gray-300 py-1.5 md:flex justify-baseline items-center px-3">
       <div
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
-        className=" w-80 relative"
+        className={`w-80 relative ${pathName === 'shop' && 'hidden'}`}
       >
         <button className="flex justify-between  bg-primary rounded-md px-5 py-2.5 text-white text-sm font-semibold w-5/6">
           Browse Categories

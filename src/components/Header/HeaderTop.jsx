@@ -32,7 +32,7 @@ const HeaderTop = () => {
           </button>
         </div>
         {/* Search bar */}
-        <div className="flex-2">
+        <div className="flex-2 ">
           {/* md screen */}
           <div className="hidden md:block">
             <SearchBtn />
@@ -44,36 +44,36 @@ const HeaderTop = () => {
               width={180}
               height={80}
               alt="Logo"
-              className="md:hidden"
+              className="md:hidden "
             />
           </Link>
         </div>
         {/* Cart and user icons */}
-        <div className="flex-1 flex justify-end gap-6">
+        <div className="flex-1 flex justify-end gap-3.5 md:gap-5 ">
           <button
             onClick={() => setSearchOpen(!searchOpen)}
             className="md:hidden"
           >
-            <Search />
+            <Search size={20} />
           </button>
           <button
             onClick={() => dispatch(toggleDrawer())}
             className="relative cursor-pointer"
           >
-            <ShoppingBag />
-            <div className=" absolute -top-1 left-4 w-fit h-5 bg-primary py-0.5 px-1.5 rounded-full text-gray-100 text-[12px] p-0.5 text-center">
+            <ShoppingBag className="w-4.5 h-4.5 md:w-6 md:h-6" />
+            <div className=" absolute top-0 left-2 md:-top-1 md:left-4 w-fit h-4 sm:h-5  bg-primary px-1 py-0.5  sm:px-1.5  rounded-full text-gray-100 text-[12px]  text-center flex items-center justify-center">
               {quantity}
             </div>
           </button>
           <button className="relative cursor-pointer">
-            <Heart />
-            <div className=" absolute -top-1 left-4 w-fit h-5 bg-primary py-0.5 px-1.5 rounded-full text-gray-100 text-[12px] p-0.5 text-center">
+            <Heart className="w-4.5 h-4.5 md:w-6 md:h-6" />
+            <div className=" absolute top-0 left-2 md:-top-1 md:left-4 w-fit h-4 sm:h-5  bg-primary px-1 py-0.5  sm:px-1.5  rounded-full text-gray-100 text-[12px]  text-center flex items-center justify-center">
               {" "}
               0
             </div>
           </button>
           <button className="mx-2 bg-gray-300 rounded-full p-2 cursor-pointer">
-            <User />
+            <User className="w-4.5 h-4.5 md:w-6 md:h-6" />
           </button>
         </div>
       </div>

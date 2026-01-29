@@ -53,8 +53,8 @@ const Category = () => {
           <SwiperSlide key={category._id} className="py-5">
             <div className=" h-32 w-40 py-5 flex flex-col justify-center items-center bg-white rounded-xl border border-gray-300 shadow-md  cursor-pointer gap-1.5 text-center ">
               <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-primary">
-                {category._image ? (
-                  <Image src={category?.imageURLs} alt={category._categoryName} width={40} height={40} />
+                {category.imageURLs ? (
+                  <Image src={category?.imageURLs} alt={category?.parentCategory} width={36} height={36} />
                 ) : (
                   <Handbag size={32} />
                 )}

@@ -13,7 +13,7 @@ const BannerCategory = () => {
       setAllCategories(await getCategories());
     })();
   }, []);
-  // console.log(categories," categories");
+  console.log(allCategories," categories");
   const categories = allCategories.slice(0, 7).reverse();
   return (
     <div className="border border-gray-300 text-gray-900 bg-white rounded-b-lg ">
@@ -26,15 +26,15 @@ const BannerCategory = () => {
             onMouseEnter={() => setHoveredCategoryId(category._id)}
             onMouseLeave={() => setHoveredCategoryId(null)}
             key={category._id}
-            className="relative flex gap-2.5 justify-between items-center border-b border-gray-300  p-2.5"
+            className="relative flex gap-2.5 justify-between items-center border-b border-gray-300  p-2 "
           >
             <Link href={`/shop?categoryPath=${encodeURIComponent(category.path || '')}`} className="flex gap-3.5 items-center w-full">
-              {category.image ? (
+              {category.imageURLs ? (
                 <Image
                   src={category?.imageURLs}
                   alt={category.parentCategory}
-                  width={80}
-                  height={80}
+                  width={32}
+                  height={32}
                 />
               ) : (
                 <Handbag size={30} />

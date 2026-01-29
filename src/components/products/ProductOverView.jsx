@@ -53,13 +53,8 @@ const ProductOverView = ({ product }) => {
     data.append("image", formData.image);
 
     try {
-      // console.log("Submitting Review:", Object.fromEntries(data));
-
-      //  API call:
-
       alert("Review submitted successfully!");
 
-      // Reset form
       setFormData({ name: "", email: "", message: "", image: null });
       setRating(0);
       setAddReview(false);
@@ -70,8 +65,8 @@ const ProductOverView = ({ product }) => {
 
   return (
     <div className="border border-gray-300 bg-white p-6 rounded-2xl">
-      {/* Tab Navigation */}
-      <div className="flex gap-3 p-1.5 bg-[#efeded] rounded-md">
+      
+      <div className="flex gap-1.5 md:gap-3 p-1.5 bg-[#efeded] rounded-md overflow-x-auto">
         {["description", "review", "video"].map((tab) => (
           <button
             key={tab}
@@ -226,7 +221,7 @@ const ProductOverView = ({ product }) => {
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white group">
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                 title="Product Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
